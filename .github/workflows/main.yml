@@ -63,7 +63,7 @@ jobs:
 
 
       - name: Upload Extent Report as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: extent-report
           path: JavaSelenium_P1/ecart/reports/extentReports/index.html  # Path to the generated Extent Report HTML file
