@@ -46,7 +46,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
-          mvn clean install  # Install dependencies
+          mvn clean install -U
           
      # Step 6: Run tests
       - name: Run tests
