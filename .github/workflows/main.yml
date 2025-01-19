@@ -3,49 +3,46 @@ name: Java Selenium Test Automation
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the main branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger on PR creation to the main branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-22.04  # Choose the OS environment for the runner
+    runs-on: ubuntu-22.04  # Explicitly use Ubuntu 22.04 for now
 
     steps:
       # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Set up Java JDK (example with OpenJDK 17)
+      # Step 2: Set up JDK 17 (for Java 17 projects)
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Set the version of Java you are using
+          java-version: '17'
           distribution: 'temurin'
 
+      # Step 3: Check Java version to ensure JDK 17 is used
+      - name: Check Java version
+        run: java -version
+
+      # Step 4: Install dependencies (with debug flags)
       - name: Install dependencies
         run: |
-          cd "JavaSelenium P1/ecart"  # Navigate to the directory where pom.xml is located
-          mvn install
+          cd "JavaSelenium P1/ecart"  # Navigate to the directory with pom.xml
+          mvn clean install -X -e  # Run Maven with debug output
 
-      # Step 4: Run the Selenium tests
+      # Step 5: Run the Selenium tests
       - name: Run Selenium tests
         run: |
-          cd "JavaSelenium P1/ecart"  # Navigate to the directory where pom.xml is located
+          cd "JavaSelenium P1/ecart"  # Navigate to the directory with pom.xml
           mvn test
 
-      # Step 5: Install dependencies (using Maven)
-      - name: Install dependencies
-        run: mvn install
-
-      # Step 6: Run the Selenium tests
-      - name: Run Selenium tests
-        run: mvn test
-
-      # Step 7: Optional - Save test results
+      # Step 6: Upload test results using the latest version of the artifact action
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: target/test-classes  # Specify the directory where your test results are stored
+          path: "JavaSelenium P1/ecart/target/test-classes"
