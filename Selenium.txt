@@ -1,0 +1,25 @@
+Create a Java selenium Project
+
+Project 1
+Navigate to https://rahulshettyacademy.com/seleniumPractise/#/
+1.Search for a Vegetable
+2.Add the below items in cart
+	Apple -3KG
+	Grapes-2KG
+	Pomegranate -4KG
+3.Apply the promocode(rahulshettyacademy) and verify the price after discount
+4.Place the order
+5.Navigate to Top Deals
+6.search for a product after pagination
+7.Change the Delivery date
+
+upload in GIT
+
+
+
+
+
+1.Create a java maven project(maven-archetype-quickstart)
+2.Add required dependencies in POM.xml(seleniumjava,testng)
+3.Create a folder report to store screensot and report
+
