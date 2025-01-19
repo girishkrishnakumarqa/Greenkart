@@ -7,7 +7,7 @@ import com.practice.ekart.pageObjects.HomePage;
 
 public class TC01_Search_Product_in_GreenKart extends BaseTest {
 
-	@Test(enabled=false)
+	@Test
 	public void SearchProduct() throws InterruptedException, IOException {
 	
 		
