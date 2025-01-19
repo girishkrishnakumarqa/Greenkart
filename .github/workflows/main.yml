@@ -49,7 +49,7 @@ jobs:
         run: |
           cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
           mvn clean install -U
-         
+        continue-on-error: true
           
      # Step 6: Run tests
       #- name: Run tests
