@@ -1,0 +1,56 @@
+name: Java Selenium Test Automation
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on PR creation to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Choose the OS environment for the runner
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Java JDK (example with OpenJDK 11)
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Set the version of Java you are using
+
+      # Step 3: Install dependencies (if using Maven)
+      - name: Set up Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Ensure the correct JDK version is set for Maven
+          distribution: 'adoptopenjdk'
+          maven-version: '3.6.3'  # Or use another version if necessary
+
+      # Step 4: Cache Maven dependencies (optional, to speed up the builds)
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Step 5: Install dependencies (using Maven)
+      - name: Install dependencies
+        run: mvn install
+
+      # Step 6: Run the Selenium tests
+      - name: Run Selenium tests
+        run: mvn test
+
+      # Step 7: Optional - Save test results
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: target/test-classes  # Specify the directory where your test results are stored
