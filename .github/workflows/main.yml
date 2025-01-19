@@ -22,14 +22,14 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'  # Set the version of Java you are using
-          distribution: 'adoptopenjdk'
+          distribution: 'temurin'
 
       # Step 3: Install dependencies (if using Maven)
       - name: Set up Maven
         uses: actions/setup-java@v2
         with:
           java-version: '11'  # Ensure the correct JDK version is set for Maven
-          distribution: 'adoptopenjdk'
+          distribution: 'temurin'
           maven-version: '3.6.3'  # Or use another version if necessary
 
       # Step 4: Cache Maven dependencies (optional, to speed up the builds)
