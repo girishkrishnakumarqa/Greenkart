@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Verify pom.xml exists
-        run: ls "JavaSelenium P1/ecart"
+        run: ls "JavaSelenium_P1/ecart"
   
       # Step 1: Set up JDK 17 (for Java 17 projects)
       - name: Set up JDK 17
