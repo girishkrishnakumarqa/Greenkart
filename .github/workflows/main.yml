@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Choose the OS environment for the runner
+    runs-on: ubuntu-22.04  # Choose the OS environment for the runner
 
     steps:
       # Step 1: Checkout the code
@@ -22,6 +22,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'  # Set the version of Java you are using
+          distribution: 'adoptopenjdk'
 
       # Step 3: Install dependencies (if using Maven)
       - name: Set up Maven
@@ -33,7 +34,7 @@ jobs:
 
       # Step 4: Cache Maven dependencies (optional, to speed up the builds)
       - name: Cache Maven dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
