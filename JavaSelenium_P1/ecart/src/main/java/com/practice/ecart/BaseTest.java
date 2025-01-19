@@ -33,7 +33,9 @@ public class BaseTest {
 		String browserName = prop.getProperty("browser");
 		if (browserName.equalsIgnoreCase("Chrome")) {
 			driver = new ChromeDriver();
-
+	options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
