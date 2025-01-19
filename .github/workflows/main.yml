@@ -53,3 +53,9 @@ jobs:
         run: |
           cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
           mvn test  # Run tests
+
+      - name: Upload Test Reports as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: JavaSelenium_P1/ecart/target/surefire-reports/  # Path to the Surefire reports
