@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-22.04  # Explicitly use Ubuntu 22.04 for now
 
     steps:
+
+  # Step 3: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Verify pom.xml exists
+        run: ls "JavaSelenium P1/ecart"
   
       # Step 1: Set up JDK 17 (for Java 17 projects)
       - name: Set up JDK 17
@@ -26,12 +33,6 @@ jobs:
       - name: Check Java version
         run: java -version
 
-    # Step 3: Checkout the code
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-
-        
      # Step 4: Set up Maven (optional if Maven version is specified)
      # - name: Set up Maven
       #  uses: actions/setup-java@v2
