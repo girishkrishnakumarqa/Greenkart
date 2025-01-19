@@ -74,14 +74,23 @@
           </configuration>
         </plugin>
 
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.0.0-M5</version>  <!-- Latest version of the Surefire Plugin -->
-      <configuration>
-        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory> <!-- Test Reports Directory -->
-      </configuration>
-    </plugin>
+ <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.0.0-M5</version>
+    <configuration>
+        <!-- Path to testng.xml in your project -->
+        <suiteXmlFiles>
+            <suiteXmlFile>JavaSelenium_P1/ecart/testng.xml</suiteXmlFile>
+        </suiteXmlFiles>
+        
+        <!-- Directory where Surefire will store reports -->
+        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+        
+        <!-- Optional: To output results to console instead of file-based logging -->
+        <useFile>false</useFile>
+    </configuration>
+</plugin>
 
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
