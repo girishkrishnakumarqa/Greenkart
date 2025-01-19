@@ -24,22 +24,16 @@ jobs:
           java-version: '11'  # Set the version of Java you are using
           distribution: 'temurin'
 
-      # Step 3: Install dependencies (if using Maven)
-      - name: Set up Maven
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'  # Ensure the correct JDK version is set for Maven
-          distribution: 'temurin'
-          maven-version: '3.6.3'  # Or use another version if necessary
+      - name: Install dependencies
+        run: |
+          cd "JavaSelenium P1/ecart"  # Navigate to the directory where pom.xml is located
+          mvn install
 
-      # Step 4: Cache Maven dependencies (optional, to speed up the builds)
-      - name: Cache Maven dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+      # Step 4: Run the Selenium tests
+      - name: Run Selenium tests
+        run: |
+          cd "JavaSelenium P1/ecart"  # Navigate to the directory where pom.xml is located
+          mvn test
 
       # Step 5: Install dependencies (using Maven)
       - name: Install dependencies
