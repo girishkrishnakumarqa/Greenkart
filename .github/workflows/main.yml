@@ -40,15 +40,14 @@ jobs:
      #    java-version: '17'
      #    maven-version: '3.8.1'
 
-      - name: Clean and Install Dependencies
-        run: mvn clean install -U
+      
   
 
       # Step 5: Install dependencies
-      #- name: Install dependencies
-       # run: |
-        #  cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
-         # mvn clean install -U
+      - name: Install dependencies
+        run: |
+          cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
+          mvn clean install -U
           
      # Step 6: Run tests
       #- name: Run tests
