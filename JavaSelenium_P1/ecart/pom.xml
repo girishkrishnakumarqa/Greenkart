@@ -81,7 +81,7 @@
     <configuration>
         <!-- Path to testng.xml in your project -->
         <suiteXmlFiles>
-            <suiteXmlFile>JavaSelenium_P1/ecart/testng.xml</suiteXmlFile>
+            <suiteXmlFile>ecart/testng.xml</suiteXmlFile>
         </suiteXmlFiles>
         
         <!-- Directory where Surefire will store reports -->
