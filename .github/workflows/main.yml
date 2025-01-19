@@ -1,6 +1,7 @@
 name: Java Selenium Test Automation
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -46,12 +47,6 @@ jobs:
       # Step 5: Install dependencies
       - name: Install dependencies
         run: |
-         sudo apt-get update
-         sudo apt-get install -y wget
-         wget https://chromedriver.storage.googleapis.com/116.0.5845.96/chromedriver_linux64.zip
-         unzip chromedriver_linux64.zip
-         sudo mv chromedriver /usr/local/bin/chromedriver
-         sudo chmod +x /usr/local/bin/chromedriver
           cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
           mvn clean install -U
           
@@ -71,4 +66,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: extent-report
-          path: JavaSelenium_P1/ecart/test-output/ExtentReport.html  # Path to the generated Extent Report HTML file
+          path: JavaSelenium_P1/ecart/reports/extentReports/index.html  # Path to the generated Extent Report HTML file
