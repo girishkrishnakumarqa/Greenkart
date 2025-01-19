@@ -45,11 +45,11 @@ jobs:
       # Step 5: Install dependencies
       - name: Install dependencies
         run: |
-          cd "JavaSelenium P1/ecart"  # Navigate to the directory with pom.xml
+          cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
           mvn clean install  # Install dependencies
           
      # Step 6: Run tests
       - name: Run tests
         run: |
-          cd "JavaSelenium P1/ecart"  # Navigate to the directory with pom.xml
+          cd "JavaSelenium_P1/ecart"  # Navigate to the directory with pom.xml
           mvn test  # Run tests
