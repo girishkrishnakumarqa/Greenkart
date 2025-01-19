@@ -32,10 +32,11 @@ public class BaseTest {
 		loadproperties();
 		String browserName = prop.getProperty("browser");
 		if (browserName.equalsIgnoreCase("Chrome")) {
-			driver = new ChromeDriver();
-	options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-gpu");
+		ChromeOptions options = new ChromeOptions();	
+		options.addArguments("--headless");
+       		options.addArguments("--no-sandbox");
+                options.addArguments("--disable-gpu");
+		driver = new ChromeDriver(options);
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
